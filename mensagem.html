@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Aniversário ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+img {
+    width: 300px;
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 18px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#mensagem {
+    margin: 20px;
+    line-height: 1.6;
+}
+
+/* corações */
+.heart {
+    position: fixed;
+    top: -10px;
+    color: red;
+    font-size: 20px;
+    animation: cair linear forwards;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<img src="foto.jpeg">
+
+<br>
+
+<button onclick="mostrar()">Clique aqui 💌</button>
+
+<p id="mensagem"></p>
+
+<audio id="musica" src="musica.mp3"></audio>
+
+<script>
+function mostrar() {
+
+    // tocar música
+    var audio = document.getElementById("musica");
+    audio.play().catch(function(e){
+        console.log("Erro ao tocar música:", e);
+    });
+
+    // mostrar mensagem
+    document.getElementById("mensagem").innerHTML =
+    "Feliz aniversário, meu amor! ❤️<br><br>" +
+    "Eu sou muito grato por ter você ao meu lado, por cada momento que a gente vive, por cada risada e até pelos desafios que nos faz crescer juntos.<br><br>" +
+    "Você é incrível de todas as formas. E o que eu sinto por você é algo que eu quero cuidar todos os dias.<br><br>" +
+    "Que o seu novo ciclo venha cheio de felicidade, conquistas e sonhos realizados.<br><br>" +
+    "Eu te amo demais 💕";
+}
+
+// corações
+function criarCoracao() {
+    var coracao = document.createElement("div");
+    coracao.className = "heart";
+    coracao.innerHTML = "❤️";
+
+    coracao.style.left = Math.random() * 100 + "vw";
+    coracao.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+    document.body.appendChild(coracao);
+
+    setTimeout(function() {
+        coracao.remove();
+    }, 4000);
+}
+
+setInterval(criarCoracao, 300);
+</script>
+
+</body>
+</html>
